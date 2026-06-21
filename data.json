@@ -1,0 +1,37 @@
+{
+  "dates": {
+    "yesterday": "2026-06-20",
+    "daybefore": "2026-06-19",
+    "today": "2026-06-21"
+  },
+  "meta": {
+    "yesterday_campaigns": [
+      {
+        "error": "HTTP Error 403: Forbidden"
+      }
+    ],
+    "yesterday_adsets": [
+      {
+        "error": "HTTP Error 403: Forbidden"
+      }
+    ],
+    "yesterday_ads": [
+      {
+        "error": "HTTP Error 403: Forbidden"
+      }
+    ],
+    "last7_campaigns": [
+      {
+        "error": "HTTP Error 403: Forbidden"
+      }
+    ],
+    "last30_ads": [
+      {
+        "error": "HTTP Error 403: Forbidden"
+      }
+    ]
+  },
+  "sheet": {
+    "error": "GOOGLE_SA_JSON is malformed/truncated — JSON parse error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)"
+  }
+}
