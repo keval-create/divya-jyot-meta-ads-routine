@@ -1,6 +1,6 @@
 # Divya Jyot LYF — Daily Quality Audit: June 20, 2026
 
-**22% warm-lead rate over last 30 days — significantly above the historical 2.3% baseline. V3 form is working. The problem is 47% unreachable leads and slow team follow-up. Speed-to-lead timestamps blocked: Meta token needs `leads_retrieval` permission.**
+**2 site visits yesterday at ₹267 each. Drive revision history now live. Unreachable rate hit 52% — half your leads can't be reached. Meta `leads_retrieval` token still needed for exact speed-to-lead times.**
 
 ---
 
@@ -12,118 +12,114 @@
 | Meta leads | 15 |
 | CPL | ₹35.60 |
 | Reach | 1,941 |
-| CTR | 2.26% |
-| Frequency | 1.16 |
+| 7-day frequency | 1.91 |
 
-**Of 15 leads, 4 logged in sheet so far (27%)** — team is still catching up. What's been logged:
+**4 of 15 leads logged so far (27%)** — 11 still missing from the sheet:
 
 | Lead | Status | Notes |
 |---|---|---|
-| Sandeep shah (8850364329) | ✅ Site visit done | 1 BHK, ₹1cr budget — **good fit** |
+| Sandeep shah (8850364329) | ✅ Site visit done | 1 BHK, ₹1cr budget — **exact fit** |
 | Suman yadav (8108958550) | ❌ Dead | Looking for rent |
 | Dimple dedhia (9819292880) | Unreachable | Busy, ringing |
 | Vikramjit kaushal (9876455912) | Unreachable | Busy |
 
-11 of yesterday's 15 leads are not yet in the sheet. Quality on those is unknown.
-
-**SVD visits confirmed on June 20:** 2 — Manjulamahida (₹90L, 1 BHK) + Sandeep shah (₹1cr, 1 BHK). Cost per visit: **₹267**. Both are Facebook leads from June 19–20.
+**SVD visits Jun 20:** 2 — Manjulamahida (₹1cr, 1 BHK) + Sandeep shah (₹1cr, 1 BHK). Cost per visit: **₹267**. Both are Facebook leads from Jun 19–20.
 
 ---
 
-## 2. Quality by Source — Last 30 Days (Jun 10–20, 45 leads tracked)
+## 2. Quality by Source — Jun 10–21 (48 leads tracked)
 
 Single active configuration: Studio ad → Open-DJR adset → Divya Jyot V3 June26.
 
 | Classification | Count | % |
 |---|---|---|
-| HOT (site visit done) | 3 | 6.7% |
-| WARM (clear intent, budget fit) | 7 | 15.6% |
-| DEAD (location/budget/fake) | 11 | 24.4% |
-| UNREACHABLE (ringing/busy/voicemail) | 21 | 46.7% |
-| Cold/unclear | 3 | 6.7% |
+| WARM/HOT (intent + budget fit) | 7 | 14.6% |
+| DEAD (location/budget/fake/rental) | 13 | 27.1% |
+| UNREACHABLE (ringing/busy/switched off) | 25 | 52.1% |
+| Cold/unclear | 3 | 6.2% |
 
-**Warm + HOT rate: 22.2%** — nearly 10× better than the historical 2.3% baseline. The OTP form is filtering meaningfully.
+**Warm + HOT rate: 14.6%** — still 6× the historical 2.3% baseline. OTP form continues to filter.
+
+**Active warm pipeline (need follow-up today):**
+- **Uday Masurkar (10/06)** — req 1 BHK, said "Coming Saturday" Jun 13, then "Coming Sunday" Jun 14. Ringing 18/6, 19/6, 20/6, 21/6 — 4 consecutive days unreachable. Was genuinely warm, now going cold.
+- **Nehal Mota (12/06)** — budget ₹1cr, 1 BHK. Busy 13/6, busy 18/6, busy 19/6. Location concern: lives in Dombivali — confirm they'll travel to Mulund.
+- **Bhakti Bhanushali (11/06)** — req 1 BHK 400+ sqft, budget ₹85L. Borderline budget (₹87L ask) but close enough to pursue.
+- **Sandeep Shah (14/06)** — budget ₹87L, 1RK exact fit. Said "coming next Thursday" (Jun 19). Called 18/6, 19/6, 20/6 — ringing each time. **Best missed conversion in the pipeline. Try WhatsApp today.**
 
 **Budget mismatches pulling quality down:**
-- Sudarshan Gaikwad — ₹50L (way too low)
-- Andre Rozario — ₹55L max
-- Swati Wankhede — ₹60L (still visited! Lost cause on budget)
-- Shweta Singh — max ₹80L
-- Bhakti Bhanushali — ₹85L (borderline)
+- Sudarshan Gaikwad — ₹50L (too low)
+- Andre Rozario — max ₹55L (too low)
+- Shweta Singh — max ₹80L (₹7L short, borderline)
 
-**Location mismatches:**
-- Reema Desai — wants Kandivali/Borivali
+**Location mismatches (dead):**
 - Anant — wants Thane
-- Manal — lives in Dombivali, looking for 1RK there
-
-**Best missed conversion — Sandeep Shah (Jun 14):** Budget ₹87L for 1RK — an exact match for this studio. Said "coming next Thursday" (Jun 19). Team called 18/6, 19/6, 20/6 — ringing each time. Never came in. This is a genuine warm lead who went cold. Budget fits to the rupee.
+- Manal — wants 1RK in Dombivali
+- Reema Desai — wants Kandivali/Borivali
 
 ---
 
 ## 3. Real Cost Per Site Visit
 
-| Window | Spend | Facebook SVD visits | Cost/visit |
+| Window | Spend | SVD visits (Facebook) | Cost/visit |
 |---|---|---|---|
-| Yesterday | ₹533.95 | 2 | **₹267** |
+| Yesterday (Jun 20) | ₹533.95 | 2 | **₹267** |
 | 7-day | ₹4,199 | 3 | ₹1,400 |
 | 30-day | ₹8,344 | 3 | **₹2,781** |
 
-Vanity CPL: ₹35.60–₹44.20. Real cost per visit is 75× the CPL — expected, and at ₹2,781 per visit this is defensible for an ₹87L product where a single booking covers the full campaign spend many times over.
-
-**Visit quality concern:** 1 of the 3 recent visits (Swati, Jun 19) has a ₹60L budget — she'll never close. So 2 of 3 visits are viable buyers. Viable-buyer cost/visit = ₹4,172 over 30 days.
+Vanity CPL: ₹35.60. Real cost per visit: 75× the CPL — expected at this funnel depth. ₹2,781 per visit is fully defensible for an ₹87L product.
 
 ---
 
-## 4. Speed-to-Lead (New Feature — Partially Blocked)
+## 4. Speed-to-Lead (Partially Unblocked)
 
-The new `fetch_all.py` attempts to pull individual Meta leads with exact `created_time` timestamps for speed-to-lead measurement. **Currently blocked by two permission gaps:**
+**Drive revision history now working** — service account upgraded to Editor access. 47 revisions returned spanning May 27 – Jun 21.
 
-**Gap 1 — Meta token missing `leads_retrieval`:**
-> `(#100) Tried accessing nonexisting field (leadgen_forms)`
+**Sheet activity on June 20 (when the team worked the sheet):**
 
-The current token has `ads_read` but not `leads_retrieval`. Without it, individual lead timestamps and phone numbers can't be fetched from Meta. Action: generate a new token with `ads_read` + `leads_retrieval` permissions (requires Facebook app with `leads_retrieval` in Advanced Access).
+| Batch | IST time |
+|---|---|
+| 1st edit | 11:04 AM |
+| 2nd edit | 12:30 PM |
+| 3rd edit | 3:27 PM |
+| 4th edit | 4:56 PM |
 
-**Gap 2 — Google Drive revisions returned 0:**
-The service account fetches Sheets data fine but returns no revision history. The Drive API either isn't enabled in the GCP project or the SA doesn't have the Sheet in its Drive scope. Action: enable Google Drive API in the project console, or share the sheet with the SA at the Drive level (not just Sheets).
+**Today (Jun 21) activity:** Sheet edited at 10:54 AM and 11:35 AM — team is working leads this morning.
 
-**What the sheet notes suggest (approximate):**
-From the dated follow-up entries, Jun 10 leads are being called on 13/6, 18/6, 19/6, 20/6 — meaning first contact is happening 3–8 days after lead arrival for many. If the OTP-warm window is 30–60 minutes, this is a significant gap. But this is inferred from follow-up dates, not actual call timestamps — it could be that a same-day call happened that isn't logged.
+**The gap:** The team's first sheet entry on Jun 20 was 11:04 AM. If leads were arriving through the morning (typical for Facebook), some waited hours before first contact. We can't confirm the exact lag because Meta lead `created_time` is still blocked.
 
-Once the token and Drive permissions are fixed, speed-to-lead will be available per-lead in future runs.
+**Still blocked:** `HTTP Error 400` on Meta leadgen_forms — token missing `leads_retrieval` permission. Once regenerated, speed-to-lead is reported per lead automatically.
 
 ---
 
 ## 5. Trend
 
-- **Warm-lead rate:** 22.2% (last 30 days) vs 2.3% historical — V3 OTP form is working, this is the headline win
-- **Unreachable rate:** 46.7% — this is the dominant problem. Nearly half of all leads can't be reached. Whether that's because of slow follow-up, bad numbers, or genuinely unavailable people, the sheet notes don't distinguish
-- **CPL:** ₹35.60 (yesterday) to ₹44.20 (7-day) — mild fluctuation, acceptable range
-- **Frequency:** 2.46 (30-day) — still below 3, audience not fatigued
-- **CTR:** 3.05% (30-day) → 2.26% (yesterday) — slight dip, watch but not alarming
+- **Warm-lead rate:** 14.6% (Jun 10–21) vs 2.3% historical — still 6× above baseline
+- **Unreachable rate:** 52.1% — now the dominant problem. More than half of all leads can't be reached despite OTP-verified numbers
+- **CPL:** ₹35.60 — stable
+- **Frequency:** 1.91 (7-day) — audience not fatigued, headroom to scale
+- **Site visits:** 2 in one day yesterday (₹267/visit) — strongest single-day result in the tracked period
 
 ---
 
 ## 6. Recommendations (Ranked)
 
-**1. Fix speed-to-lead permissions — this is the point of today's feature.**
-- Meta: regenerate token with `leads_retrieval` permission
-- Google: enable Drive API in Cloud Console, confirm SA has Drive-level access to the sheet
-- Once fixed, this routine will report per-lead response times automatically
+**1. WhatsApp Sandeep Shah (₹87L, 1RK, exact fit) — today.**
+Three consecutive calls went unanswered. Send a WhatsApp with a site photo and a specific slot: "Are you free Thursday 11 AM for a site visit? I've set aside time." This lead is still warm — don't let it die from call fatigue.
 
-**2. Attack the unreachable pile — it's nearly half your leads.**
-46.7% unreachable is not acceptable for an OTP-verified form. These people completed OTP, so their numbers are real and they were engaged. Calling within 30 minutes of form submission catches them before they forget. Schedule a morning blitz: call every lead from the previous evening within the first hour of business.
+**2. Same for Uday Masurkar — 4 days ringing is too long.**
+He said he was coming twice (Jun 13, Jun 14). Four unanswered calls since. Try WhatsApp or a different number. If no response by tomorrow, move to dead.
 
-**3. Recover Sandeep Shah (₹87L, 1RK, exact fit).**
-Lead from Jun 14, perfect budget match, said he'd visit Jun 19. Didn't show. Team has rung 3 times — try WhatsApp message today with a site photo and a specific time slot offer.
+**3. Attack the unreachable pile with an evening blitz.**
+52% unreachable is not acceptable for OTP-verified leads. People who submitted at 9 AM won't answer until 7–8 PM. Run a dedicated callback round every evening for the day's unanswered leads.
 
-**4. Add a budget question to the form.**
-5 leads in the last 30 days have budgets of ₹50–80L — well below the studio's ₹87L floor. Each is a wasted call. A single "What's your approx. budget?" field on the form would filter these out before they enter the pipeline.
+**4. Fix the Meta `leads_retrieval` token.**
+Regenerate the Facebook token with `ads_read` + `leads_retrieval` permissions (requires Advanced Access in the Facebook app settings). This unlocks per-lead arrival timestamps and closes the speed-to-lead measurement loop.
 
-**5. Get yesterday's 11 unlogged leads into the sheet today.**
-Only 4 of 15 Jun 20 leads are logged. The others are aging — every hour without a call reduces the chance of an answer. Log and call before end of day.
+**5. Log yesterday's 11 unlogged leads today.**
+Only 4 of 15 Jun 20 leads are in the sheet. The others are now 24+ hours old. Log and call before end of day — answer rates drop sharply after 48 hours.
 
 ---
 
 *One active campaign: Divya Jyot V3 June26 / Studio ad / Open-DJR adset.*
-*Speed-to-lead: blocked — Meta `leads_retrieval` + Drive revision permissions needed.*
-*Sheet match rate (30-day): 45/225 = 20% logged. More complete for recent dates; older leads have full follow-up history.*
+*Speed-to-lead: Drive revisions ✅ (47 entries). Meta `leads_retrieval` ❌ (token permission needed).*
+*Sheet match rate (Jun 10–21): 48 leads tracked of ~95 7-day Meta leads = ~50% logged.*
