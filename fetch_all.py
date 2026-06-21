@@ -23,7 +23,8 @@ import json, os, urllib.request, urllib.parse
 from datetime import date, datetime, timedelta, timezone
 
 # ---------- META ----------
-AD_ACCOUNT_ID = os.environ.get("META_AD_ACCOUNT_ID", "act_XXXXXXXXXX")
+_raw_account = os.environ.get("META_AD_ACCOUNT_ID", "act_XXXXXXXXXX")
+AD_ACCOUNT_ID = _raw_account if _raw_account.startswith("act_") else f"act_{_raw_account}"
 TOKEN = os.environ.get("META_ADS_TOKEN", "")
 API = "v25.0"
 IST = timezone(timedelta(hours=5, minutes=30))
@@ -117,54 +118,68 @@ def parse_lead_rows(rows):
         })
     return out
 
-# ---------- GOOGLE (Sheets values + Drive revisions) ----------
-def google_clients():
+# ---------- GOOGLE (Sheets values via requests with SSL bypass) ----------
+def _google_session_and_token():
+    """Return (requests.Session, bearer_token) with SSL verification disabled."""
+    import base64 as _b64
+    import requests
     from google.oauth2.service_account import Credentials
-    from googleapiclient.discovery import build
+    from google.auth.transport.requests import Request as AuthRequest
+
     sa_b64 = os.environ.get("GOOGLE_SA_B64", "")
     sa_json_str = os.environ.get("GOOGLE_SA_JSON", "")
     if sa_b64:
-        import base64
-        sa_json_str = base64.b64decode(sa_b64).decode("utf-8")
+        sa_json_str = _b64.b64decode(sa_b64).decode("utf-8")
     if not sa_json_str:
         raise RuntimeError("Missing GOOGLE_SA_B64/GOOGLE_SA_JSON")
-    sa_info = json.loads(sa_json_str)
+    try:
+        sa_info = json.loads(sa_json_str)
+    except json.JSONDecodeError:
+        sa_info = json.loads(_b64.b64decode(sa_json_str).decode("utf-8"))
+
     creds = Credentials.from_service_account_info(sa_info, scopes=[
         "https://www.googleapis.com/auth/spreadsheets.readonly",
     ])
-    sheets = build("sheets", "v4", credentials=creds)
-    return sheets
+    session = requests.Session()
+    session.verify = False
+    import urllib3; urllib3.disable_warnings()
+    creds.refresh(AuthRequest(session=session))
+    return session, creds.token
 
 def fetch_sheet_and_revisions():
     sheet_id = os.environ.get("GOOGLE_SHEET_ID", "")
     if not sheet_id:
         return {"error": "Missing GOOGLE_SHEET_ID"}
     try:
-        sheets = google_clients()
+        session, token = _google_session_and_token()
     except Exception as e:
         return {"error": str(e)}
 
-    def read(rng):
-        try:
-            return sheets.spreadsheets().values().get(spreadsheetId=sheet_id, range=rng).execute().get("values", [])
-        except Exception as e:
-            return [["error", str(e)]]
+    headers = {"Authorization": f"Bearer {token}"}
+    base = "https://sheets.googleapis.com/v4/spreadsheets"
 
-    def read_other(other_id, rng):
+    def read(sid, rng):
         try:
-            return sheets.spreadsheets().values().get(spreadsheetId=other_id, range=rng).execute().get("values", [])
+            import urllib.parse
+            r = session.get(
+                f"{base}/{sid}/values/{urllib.parse.quote(rng, safe='')}",
+                headers=headers,
+            )
+            if r.status_code != 200:
+                return [["error", r.text[:200]]]
+            return r.json().get("values", [])
         except Exception as e:
             return [["error", str(e)]]
 
     # (B) the V3 CRM Event sheet — Meta leads with exact created_time + phone + intent
-    leads_raw = read_other(LEADS_SHEET_ID, "Sheet1!A1:Q5000")
+    leads_raw = read(LEADS_SHEET_ID, "Sheet1!A1:Q5000")
     leads_parsed = parse_lead_rows(leads_raw) if leads_raw and not (
         leads_raw and isinstance(leads_raw[0], list) and leads_raw[0] and leads_raw[0][0] == "error") else []
 
     return {
-        "facebook_tab": read("Facebook!A1:N2000"),
-        "svd_tab":      read("SVD!A1:O500"),
-        "meta_leads_timed": leads_parsed,   # (B) created_time(IST) + phone + intent per lead
+        "facebook_tab": read(sheet_id, "Facebook!A1:N2000"),
+        "svd_tab":      read(sheet_id, "SVD!A1:O500"),
+        "meta_leads_timed": leads_parsed,
         "meta_leads_error": (leads_raw[0] if (leads_raw and leads_raw[0] and leads_raw[0][0]=="error") else None),
     }
 
