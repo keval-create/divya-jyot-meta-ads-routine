@@ -18576,7 +18576,196 @@
         "Looking for 1bhk budget is 1cr."
       ]
     ],
-    "revisions": [],
+    "revisions": [
+      {
+        "id": "21486",
+        "modifiedTime": "2026-05-27T07:30:34.899Z"
+      },
+      {
+        "id": "21514",
+        "modifiedTime": "2026-05-27T08:50:53.500Z"
+      },
+      {
+        "id": "21526",
+        "modifiedTime": "2026-05-27T10:17:31.031Z"
+      },
+      {
+        "id": "21595",
+        "modifiedTime": "2026-05-28T07:50:12.129Z"
+      },
+      {
+        "id": "21603",
+        "modifiedTime": "2026-05-28T08:36:10.260Z"
+      },
+      {
+        "id": "21719",
+        "modifiedTime": "2026-05-28T12:35:06.452Z"
+      },
+      {
+        "id": "21720",
+        "modifiedTime": "2026-05-28T13:35:07.258Z"
+      },
+      {
+        "id": "21773",
+        "modifiedTime": "2026-05-29T06:29:51.536Z"
+      },
+      {
+        "id": "21792",
+        "modifiedTime": "2026-05-30T05:46:05.233Z"
+      },
+      {
+        "id": "21793",
+        "modifiedTime": "2026-05-30T06:46:52.209Z"
+      },
+      {
+        "id": "21800",
+        "modifiedTime": "2026-05-31T08:58:00.971Z"
+      },
+      {
+        "id": "21815",
+        "modifiedTime": "2026-06-10T01:54:08.208Z"
+      },
+      {
+        "id": "21848",
+        "modifiedTime": "2026-06-10T07:57:55.678Z"
+      },
+      {
+        "id": "21851",
+        "modifiedTime": "2026-06-10T09:03:22.945Z"
+      },
+      {
+        "id": "21857",
+        "modifiedTime": "2026-06-10T12:09:34.766Z"
+      },
+      {
+        "id": "21892",
+        "modifiedTime": "2026-06-10T14:29:04.307Z"
+      },
+      {
+        "id": "21963",
+        "modifiedTime": "2026-06-11T07:17:37.739Z"
+      },
+      {
+        "id": "21988",
+        "modifiedTime": "2026-06-11T09:08:44.822Z"
+      },
+      {
+        "id": "21990",
+        "modifiedTime": "2026-06-11T13:40:44.616Z"
+      },
+      {
+        "id": "21999",
+        "modifiedTime": "2026-06-12T05:58:25.871Z"
+      },
+      {
+        "id": "22006",
+        "modifiedTime": "2026-06-12T07:19:36.836Z"
+      },
+      {
+        "id": "22007",
+        "modifiedTime": "2026-06-12T08:54:19.846Z"
+      },
+      {
+        "id": "22050",
+        "modifiedTime": "2026-06-13T07:26:34.008Z"
+      },
+      {
+        "id": "22067",
+        "modifiedTime": "2026-06-13T10:12:45.407Z"
+      },
+      {
+        "id": "22075",
+        "modifiedTime": "2026-06-13T12:59:23.138Z"
+      },
+      {
+        "id": "22082",
+        "modifiedTime": "2026-06-14T06:31:57.548Z"
+      },
+      {
+        "id": "22090",
+        "modifiedTime": "2026-06-14T07:46:54.656Z"
+      },
+      {
+        "id": "22091",
+        "modifiedTime": "2026-06-14T10:18:16.761Z"
+      },
+      {
+        "id": "22098",
+        "modifiedTime": "2026-06-14T15:12:23.420Z"
+      },
+      {
+        "id": "22106",
+        "modifiedTime": "2026-06-15T05:51:07.937Z"
+      },
+      {
+        "id": "22108",
+        "modifiedTime": "2026-06-15T06:30:40.171Z"
+      },
+      {
+        "id": "22164",
+        "modifiedTime": "2026-06-18T07:00:03.169Z"
+      },
+      {
+        "id": "22170",
+        "modifiedTime": "2026-06-18T07:32:32.925Z"
+      },
+      {
+        "id": "22173",
+        "modifiedTime": "2026-06-18T08:13:58.740Z"
+      },
+      {
+        "id": "22202",
+        "modifiedTime": "2026-06-18T10:27:06.475Z"
+      },
+      {
+        "id": "22215",
+        "modifiedTime": "2026-06-18T11:36:01.426Z"
+      },
+      {
+        "id": "22222",
+        "modifiedTime": "2026-06-18T14:29:04.774Z"
+      },
+      {
+        "id": "22270",
+        "modifiedTime": "2026-06-19T06:22:18.258Z"
+      },
+      {
+        "id": "22293",
+        "modifiedTime": "2026-06-19T07:57:28.842Z"
+      },
+      {
+        "id": "22294",
+        "modifiedTime": "2026-06-19T09:16:54.407Z"
+      },
+      {
+        "id": "22300",
+        "modifiedTime": "2026-06-19T10:09:51.476Z"
+      },
+      {
+        "id": "22336",
+        "modifiedTime": "2026-06-20T05:34:03.917Z"
+      },
+      {
+        "id": "22337",
+        "modifiedTime": "2026-06-20T07:00:25.631Z"
+      },
+      {
+        "id": "22386",
+        "modifiedTime": "2026-06-20T09:57:58.279Z"
+      },
+      {
+        "id": "22406",
+        "modifiedTime": "2026-06-20T11:26:55.484Z"
+      },
+      {
+        "id": "22412",
+        "modifiedTime": "2026-06-21T05:24:36.909Z"
+      },
+      {
+        "id": "22417",
+        "modifiedTime": "2026-06-21T06:05:30.965Z"
+      }
+    ],
     "revisions_note": "Google batches edits into revisions; each modifiedTime marks when a batch of edits was saved, not each keystroke. Use to bound first-contact timing to within a few minutes, not to the exact second."
   }
 }
