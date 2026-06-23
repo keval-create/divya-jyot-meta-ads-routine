@@ -23,7 +23,8 @@ import json, os, urllib.request, urllib.parse
 from datetime import date, datetime, timedelta, timezone
 
 # ---------- META ----------
-AD_ACCOUNT_ID = os.environ.get("META_AD_ACCOUNT_ID", "act_XXXXXXXXXX")
+_raw_account_id = os.environ.get("META_AD_ACCOUNT_ID", "act_XXXXXXXXXX")
+AD_ACCOUNT_ID = _raw_account_id if _raw_account_id.startswith("act_") else f"act_{_raw_account_id}"
 TOKEN = os.environ.get("META_ADS_TOKEN", "")
 API = "v25.0"
 IST = timezone(timedelta(hours=5, minutes=30))
@@ -128,18 +129,25 @@ def parse_lead_rows(rows):
 def google_clients():
     from google.oauth2.service_account import Credentials
     from googleapiclient.discovery import build
+    import base64
     sa_b64 = os.environ.get("GOOGLE_SA_B64", "")
     sa_json_str = os.environ.get("GOOGLE_SA_JSON", "")
     if sa_b64:
-        import base64
         sa_json_str = base64.b64decode(sa_b64).decode("utf-8")
     if not sa_json_str:
         raise RuntimeError("Missing GOOGLE_SA_B64/GOOGLE_SA_JSON")
-    sa_info = json.loads(sa_json_str)
+    # GOOGLE_SA_JSON may itself be base64-encoded — detect and decode
+    try:
+        sa_info = json.loads(sa_json_str)
+    except Exception:
+        sa_info = json.loads(base64.b64decode(sa_json_str).decode("utf-8"))
     creds = Credentials.from_service_account_info(sa_info, scopes=[
         "https://www.googleapis.com/auth/spreadsheets.readonly",
     ])
-    sheets = build("sheets", "v4", credentials=creds)
+    import httplib2, google_auth_httplib2
+    http = httplib2.Http(disable_ssl_certificate_validation=True)
+    authorized_http = google_auth_httplib2.AuthorizedHttp(creds, http=http)
+    sheets = build("sheets", "v4", http=authorized_http)
     return sheets
 
 def fetch_sheet_and_revisions():
