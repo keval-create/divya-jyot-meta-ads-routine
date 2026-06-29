@@ -54,6 +54,21 @@ the team. Delivered to Keval on Telegram. Mobile-first, scannable, blunt, no fil
 
 ## THE REPORT — required sections (this is the daily snapshot Keval asked for)
 
+## IMPROVE OVER TIME (this is a standing instruction)
+Before writing today's report, READ the last few reports in `reports/` (especially
+`reports/latest.md` and the 2-3 before it). Use them to:
+- Track whether your past diagnostic recommendations were acted on and whether they worked
+  (e.g. did speed-to-lead improve after you flagged it? did a flagged lead convert?).
+- Follow up on specific leads you named as priorities last time — what happened to them?
+- Avoid repeating the same generic advice; build on what you already said.
+- Notice trends only visible across days (creative fatigue, week-over-week quality).
+Each report should feel like it remembers yesterday and is getting sharper. Maintain a short
+"FOLLOW-UP FROM LAST REPORT" note near the top when there's something to close the loop on.
+Keep a running file `reports/_memory.md` where you jot 3-5 bullets each day of what to watch
+next time (named leads to track, hypotheses to confirm, recommendations pending) — read it
+at the start of every run and update it at the end. This is your memory across days.
+
+
 The PRIMARY window is **TODAY so far** (midnight IST → ~7PM run time), using `meta.today_*`.
 Use yesterday / last7 / last30 for comparison and trend, not as the headline window.
 
@@ -86,6 +101,8 @@ Use yesterday / last7 / last30 for comparison and trend, not as the headline win
    Report: average response time; how many contacted same-day / >1 day / >3 days; fastest
    and slowest NAMED examples with times; and CROSS INTENT WITH SPEED — a within_3_months
    lead left for days is a worse miss than a just_exploring one; flag those specifically.
+   Write in the report in tabular form the name of the lead, the time it arrived in meta, 
+   the time it was updated on the google sheet, the lag.
    Be explicit about precision (day-level from dates, finer if times are written).
    If the team was fast, CREDIT them. If slow, name it and tie it to lost warm leads.
 
@@ -110,19 +127,6 @@ Use yesterday / last7 / last30 for comparison and trend, not as the headline win
   number; mark unknowns "unknown".
 - Telegram has no tables — use bold headers, short lines, simple lists. Keep it tight.
 
-## IMPROVE OVER TIME (this is a standing instruction)
-Before writing today's report, READ the last few reports in `reports/` (especially
-`reports/latest.md` and the 2-3 before it). Use them to:
-- Track whether your past diagnostic recommendations were acted on and whether they worked
-  (e.g. did speed-to-lead improve after you flagged it? did a flagged lead convert?).
-- Follow up on specific leads you named as priorities last time — what happened to them?
-- Avoid repeating the same generic advice; build on what you already said.
-- Notice trends only visible across days (creative fatigue, week-over-week quality).
-Each report should feel like it remembers yesterday and is getting sharper. Maintain a short
-"FOLLOW-UP FROM LAST REPORT" note near the top when there's something to close the loop on.
-Keep a running file `reports/_memory.md` where you jot 3-5 bullets each day of what to watch
-next time (named leads to track, hypotheses to confirm, recommendations pending) — read it
-at the start of every run and update it at the end. This is your memory across days.
 
 ## Delivery
 Write report.md + reports/YYYY-MM-DD.md + reports/latest.md, update reports/_memory.md,
