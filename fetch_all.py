@@ -53,11 +53,8 @@ _INSIGHT_FIELDS = ("campaign_name,adset_name,ad_name,spend,impressions,reach,cli
                    "inline_link_clicks,ctr,cpm,cpc,frequency,actions")
 
 # Match Ads Manager's default attribution so counts line up with what you see on screen.
-# Ads Manager default = 7-day click + 1-day view. We pin the same here.
-_ATTRIBUTION = json.dumps([
-    {"event_type": "CLICK_THROUGH", "window_days": 7},
-    {"event_type": "VIEW_THROUGH",  "window_days": 1},
-])
+# Ads Manager default = 7-day click + 1-day view. Meta API v25+ expects string format.
+_ATTRIBUTION = json.dumps(["7d_click", "1d_view"])
 
 def meta_insights(level, since, until):
     if not TOKEN or not AD_ACCOUNT_ID:
@@ -197,18 +194,24 @@ def fetch_sheets():
     sheet_id = os.environ.get("GOOGLE_SHEET_ID", "")
     if not sheet_id:
         return {"error": "Missing GOOGLE_SHEET_ID"}
-    try:
-        svc = google_sheets()
-    except Exception as e:
-        return {"error": f"google auth/build failed: {e}"}
+
+    # httplib2 is NOT thread-safe — each concurrent reader needs its own service instance.
+    def make_svc():
+        try:
+            return google_sheets()
+        except Exception as e:
+            return None
 
     def read(sid, rng):
+        svc = make_svc()
+        if svc is None:
+            return [["error", "google auth/build failed"]]
         try:
             return svc.spreadsheets().values().get(spreadsheetId=sid, range=rng).execute().get("values", [])
         except Exception as e:
             return [["error", str(e)]]
 
-    # Run the three sheet reads concurrently (they're independent network calls).
+    # Run the three sheet reads concurrently, each with its own service instance.
     with ThreadPoolExecutor(max_workers=3) as ex:
         f_fb   = ex.submit(read, sheet_id, "Facebook!A1:N2000")
         f_svd  = ex.submit(read, sheet_id, "SVD!A1:O500")
