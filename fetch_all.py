@@ -54,10 +54,9 @@ _INSIGHT_FIELDS = ("campaign_name,adset_name,ad_name,spend,impressions,reach,cli
 
 # Match Ads Manager's default attribution so counts line up with what you see on screen.
 # Ads Manager default = 7-day click + 1-day view. We pin the same here.
-_ATTRIBUTION = json.dumps([
-    {"event_type": "CLICK_THROUGH", "window_days": 7},
-    {"event_type": "VIEW_THROUGH",  "window_days": 1},
-])
+# NOTE: as of Graph API v25.0, this param takes short string codes, not the old
+# [{"event_type":..., "window_days":...}] object form (that now raises a 400 (#100)).
+_ATTRIBUTION = json.dumps(["7d_click", "1d_view"])
 
 def meta_insights(level, since, until):
     if not TOKEN or not AD_ACCOUNT_ID:
