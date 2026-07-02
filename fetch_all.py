@@ -54,10 +54,10 @@ _INSIGHT_FIELDS = ("campaign_name,adset_name,ad_name,spend,impressions,reach,cli
 
 # Match Ads Manager's default attribution so counts line up with what you see on screen.
 # Ads Manager default = 7-day click + 1-day view. We pin the same here.
-_ATTRIBUTION = json.dumps([
-    {"event_type": "CLICK_THROUGH", "window_days": 7},
-    {"event_type": "VIEW_THROUGH",  "window_days": 1},
-])
+# NOTE: v25.0 expects plain window-name strings (e.g. "7d_click"), not the older
+# {"event_type": ..., "window_days": ...} object form — that form now 400s with
+# error code 100 ("must be one of the following values: 1d_view, 7d_click, ...").
+_ATTRIBUTION = json.dumps(["7d_click", "1d_view"])
 
 def meta_insights(level, since, until):
     if not TOKEN or not AD_ACCOUNT_ID:
@@ -197,22 +197,25 @@ def fetch_sheets():
     sheet_id = os.environ.get("GOOGLE_SHEET_ID", "")
     if not sheet_id:
         return {"error": "Missing GOOGLE_SHEET_ID"}
-    try:
-        svc = google_sheets()
-    except Exception as e:
-        return {"error": f"google auth/build failed: {e}"}
-
-    def read(sid, rng):
+    def read(rng, sid=sheet_id):
         try:
+            # A fresh service/http per call: the underlying httplib2.Http connection
+            # is NOT thread-safe, and sharing one `svc` across threads reproducibly
+            # corrupted the interpreter heap ("malloc(): unsorted double linked list
+            # corrupted") in this environment. Building per-call is cheap (~local
+            # object construction, no network) so this is a safe fix, not just a
+            # workaround.
+            svc = google_sheets()
             return svc.spreadsheets().values().get(spreadsheetId=sid, range=rng).execute().get("values", [])
         except Exception as e:
             return [["error", str(e)]]
 
-    # Run the three sheet reads concurrently (they're independent network calls).
+    # Run the three sheet reads concurrently (they're independent network calls,
+    # each with its own service object — see note in `read` above).
     with ThreadPoolExecutor(max_workers=3) as ex:
-        f_fb   = ex.submit(read, sheet_id, "Facebook!A1:N2000")
-        f_svd  = ex.submit(read, sheet_id, "SVD!A1:O500")
-        f_lead = ex.submit(read, LEADS_SHEET_ID, "Sheet1!A1:Q5000")
+        f_fb   = ex.submit(read, "Facebook!A1:N2000")
+        f_svd  = ex.submit(read, "SVD!A1:O500")
+        f_lead = ex.submit(read, "Sheet1!A1:Q5000", LEADS_SHEET_ID)
         fb, svd, leads_raw = f_fb.result(), f_svd.result(), f_lead.result()
 
     err = leads_raw[0] if (leads_raw and leads_raw[0] and leads_raw[0][0] == "error") else None
@@ -224,7 +227,12 @@ def fetch_sheets():
         "meta_leads_error": err,
     }
 
-# ---------- ASSEMBLE (Meta calls + Sheets all concurrent) ----------
+# ---------- ASSEMBLE (Meta calls concurrent, then Sheets) ----------
+# NOTE: Meta's urllib/ssl calls and Google's rust-backed cryptography auth are run in
+# SEPARATE phases, not the same thread pool. Mixing them (both creating SSL/crypto
+# contexts across threads at once) reproducibly corrupted the interpreter's heap
+# ("malloc(): unsorted double linked list corrupted") / hung indefinitely in this
+# environment. Each phase is safely concurrent on its own — just not with the other.
 def run_fetch():
     jobs = {
         "today": ("campaign", day(0), day(0)),   # TODAY so far (up to run time, ~7PM)
@@ -238,10 +246,9 @@ def run_fetch():
     results = {}
     with ThreadPoolExecutor(max_workers=8) as ex:
         meta_futs = {k: ex.submit(meta_insights, *v) for k, v in jobs.items()}
-        sheet_fut = ex.submit(fetch_sheets)
         for k, fut in meta_futs.items():
             results[k] = shape_meta(fut.result())
-        sheet = sheet_fut.result()
+    sheet = fetch_sheets()
 
     data = {
         "dates": {"yesterday": day(1), "daybefore": day(2), "today": day(0), "tz": "IST",
